@@ -1,3 +1,6 @@
+body {
+  background-color: whitesmoke;
+}
 .App {
   text-align: center;
 }
@@ -14,7 +17,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #308f5b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +38,21 @@
   to {
     transform: rotate(360deg);
   }
+}
+.jumbotron.jumbotron-fluid {
+  background-color: rgb(74, 145, 112);
+  align-items: center;
+}
+
+.input-group-text {
+  text-decoration: none;
+  display: none;
+}
+
+.btn-secondary {
+  background-color: rgb(74, 145, 112);
+}
+
+.container {
+  text-align: -webkit-center;
 }
