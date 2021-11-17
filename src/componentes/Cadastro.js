@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import FormularioCadastro from './formularioCadastro'
-import fireDb from '../database/firebase'
 
+import fireDb from '../database/firebase'
 
 const Cadastro = () => {
 
     const [dadosAlunos, setDadosAlunos] = useState({})
-
-    let [idAtual, setIdAtual] = useState('')
-
 
     useEffect(() => {
         fireDb.child('cadastros').on('value', dbPhoto => {
@@ -22,8 +18,6 @@ const Cadastro = () => {
         })
     }, [])
 
-    
-
     return (
         <div>
             <div className="jumbotron jumbotron-fluid">
@@ -35,13 +29,12 @@ const Cadastro = () => {
 
             <div className="row">
 
-                <div className="col-md-6">
-                    <FormularioCadastro {...({ idAtual, dadosAlunos })} />
-                </div>
+                
 
-                <div className="col-11">
+                <div className="col-12">
                     <table className="table table-borderless table-stripped">
                         <thead className="thead-light">
+                        
                             <tr>
                                 <td>Nome</td>
                                 <td>NotaUm</td>
@@ -57,6 +50,9 @@ const Cadastro = () => {
                             {
                                 Object.keys(dadosAlunos).map(id => {
                                     return <tr key={id}>
+
+                                        
+
                                         <td> {dadosAlunos[id].Nome}</td>
                                         <td> {dadosAlunos[id].NotaUm}</td>
                                         <td> {dadosAlunos[id].NotaDois}</td>
