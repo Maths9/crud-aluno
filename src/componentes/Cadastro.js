@@ -22,45 +22,7 @@ const Cadastro = () => {
         })
     }, [])
 
-    const addEedit = obj => {
-
-        if (idAtual == '') {
-            console.log(obj)
-            fireDb.child('cadastros').push(
-                obj,
-                error => {
-                    if (error) {
-                        console.log(error)
-                    } else {
-                        setIdAtual('')
-                    }
-                }
-            )
-        } else {
-            fireDb.child(`cadastros/${idAtual}`).set(
-                obj,
-                err => {
-                    if (err) {
-                        console.log(err)
-                    }
-                }
-            )
-        }
-    }
-
-
-    const deleteCadastro = idAtual => {
-        if (window.confirm('Deseja deletar esse cadastro ?')) {
-            fireDb.child(`cadastros/${idAtual}`).remove(
-                err => {
-                    if (err) {
-                        console.log(err)
-                    }
-                }
-            )
-        }
-    }
-
+    
 
     return (
         <div>
@@ -73,11 +35,11 @@ const Cadastro = () => {
 
             <div className="row">
 
-                <div className="col-md-4">
-                    <FormularioCadastro {...({ addEedit, idAtual, dadosAlunos })} />
+                <div className="col-md-6">
+                    <FormularioCadastro {...({ idAtual, dadosAlunos })} />
                 </div>
 
-                <div className="col-8">
+                <div className="col-11">
                     <table className="table table-borderless table-stripped">
                         <thead className="thead-light">
                             <tr>
@@ -101,15 +63,7 @@ const Cadastro = () => {
                                         <td> {dadosAlunos[id].NotaTres}</td>
                                         <td> {dadosAlunos[id].NotaQuatro}</td>
 
-                                        <td>
-                                            <a className="btn btn-outline-success" onClick={() => { setIdAtual(id) }}>
-                                                <i className="fas fa-pencil-alt"></i>
-                                            </a>
-
-                                            <a className="btn btn-danger" onClick={() => deleteCadastro(id)}>
-                                                <i className=" far fa-trash-alt"></i>
-                                            </a>
-                                        </td>
+                                        
 
                                     </tr>
                                 })
